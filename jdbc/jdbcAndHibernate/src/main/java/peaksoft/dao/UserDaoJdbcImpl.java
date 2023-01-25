@@ -1,8 +1,11 @@
 package peaksoft.dao;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
 import peaksoft.model.User;
 import peaksoft.util.Util;
 
+import javax.persistence.Query;
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,6 +35,7 @@ public class UserDaoJdbcImpl implements UserDao {
     }
 
     public void dropUsersTable() {
+
         try (Statement statement = connection.createStatement()) {
             statement.execute("""
                                     drop table users;

@@ -1,10 +1,24 @@
 package peaksoft.model;
 
+import lombok.*;
+
 import javax.persistence.*;
 
-@Table
+@Getter
+@Setter
+@ToString
+@EqualsAndHashCode
+@Entity
+@Table(name = "laptops")
 public class User {
     @Id
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "laptop_id_generator")
+    @SequenceGenerator(
+            name = "laptop_id_generator",
+            sequenceName = "laptop_seq",
+            allocationSize = 1
+    )
     private Long id;
 
     @Column
